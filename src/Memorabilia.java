@@ -137,7 +137,10 @@ public class Memorabilia{
 
     public void Devolucion(){
 
-        System.out.println("ID del cliente");
+       // Devolución de películas: Para esto debe mostrar las películas prestadas incluyendo
+//nombre de la película y el nombre del cliente. Seleccionar la película a devolver y
+//modificar el estado del cliente y la película, dejando en disponibilidad.
+        /*System.out.println("ID del cliente");
         int idcliente= sca.nextInt();
         System.out.println("ID de la pelicula");
         int idpelicula = sca.nextInt();
@@ -148,6 +151,22 @@ public class Memorabilia{
                 System.out.println((i+1)+".  ID: "+id_anio_Prest[i][0]+",   Nombre: "+nombrePeli_Ca[i][0]+",   Anio: "+id_anio_Prest[i][1]+",   Categoria: "+nombrePeli_Ca[i][1]+",   Estado: "+estadoPelicula(Disponible[i]));
                 Disponible[idpelicula] = true;
             } 
+        }*/
+        for (int i = 0; i < cantidadClientes; i++) {
+            if (Disponible[i] == true) {
+                System.out.println("Nombre: "+nombrePeli_Ca[i][0]+" Cliente: "+nombreCliente[i]+" ID CLIENTE: "+id_telefono[i][0]);
+            }
+            
+        }
+        System.out.println("Ingrese el ID del cliente");
+        int idcliente= sca.nextInt();
+        for (int i = 0; i < Disponible.length; i++) {
+            if (idcliente == id_telefono[i][0]) {
+                Disponible[i] = true;
+                peliprestada[i] = false;
+
+            }
+            
         }
         
 
@@ -164,6 +183,7 @@ public class Memorabilia{
                 id_telefono[i][1] = telefono;
                 int ID = (int)(Math.random()*(999-100)+100);
                 id_telefono[i][0] = ID;
+                peliprestada[i] = false;
         }
         
 
