@@ -250,4 +250,16 @@ public class Memorabilia {
        }  
         return ID;
     }
+
+    public void ordenarString() {
+        for (int i = 0; i < cantidadClientes; i++) {
+            for (int j = 0; j < cantidadClientes-1; j++) {
+                if ((nombrePeli_Ca[j][0]!=null)&&(nombrePeli_Ca[j+1][0]!=null)&&(nombrePeli_Ca[j][0].compareToIgnoreCase(nombrePeli_Ca[j+1][0])>0)) {
+                    String auxiliar = nombrePeli_Ca[j][0];
+                    nombrePeli_Ca[j][0]=nombrePeli_Ca[j+1][0];
+                    nombrePeli_Ca[j+1][0]=auxiliar;
+                }
+            }
+        }
+    }
 }
