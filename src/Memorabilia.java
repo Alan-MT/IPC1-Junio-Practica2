@@ -271,14 +271,17 @@ public class Memorabilia {
     public void Reportes(){
         System.out.println("\n Reportes");
         System.out.println("Cantidad de peliculas por categoria: ");
-
+        int[] contadora = new int[5];
         System.out.println("Peliculas por Categoria: ");
 
-        System.out.println("Cantidad de peliculas: ");
+ 
+        System.out.println("Cantidad de prestamos por peliculas: ");
+        imprimirPeliculasPrestadas();
+        String masPrestadas = "", menosPrestads = "";
+        manejarCategoria(masPrestadas, menosPrestads);
+        System.out.println("Peliculas mas prestadas: "+masPrestadas);
 
-        System.out.println("Peliculas mas prestadas: ");
-
-        System.out.println("peliculas Menos prestadas: ");
+        System.out.println("peliculas Menos prestadas: "+menosPrestads);
 
 
     }
@@ -291,5 +294,28 @@ public class Memorabilia {
         System.out.println("Escriba el numero de la categoria");
         int categoriaPelicua = sca.nextInt();
         return categorias[categoriaPelicua-1];
+    }
+
+    public void manejarCategoria(String masPrestadas,String menosPrestda){
+        int mayor =0,menor = 100;
+        for (int i = 0; i < cantidadClientes; i++) {
+            if (id_anio_Prest[i][2]>mayor) {
+                mayor = id_anio_Prest[i][2];
+                masPrestadas = nombrePeli_Ca[i][0];
+            }if (id_anio_Prest[i][2]<menor) {
+                menor = id_anio_Prest[i][2];
+                menosPrestda = nombrePeli_Ca[i][0];
+            }
+        }
+    }
+
+    public void imprimirPeliculasPrestadas(){
+        for (int i = 0; i < cantidadClientes; i++) {
+            if (nombrePeli_Ca[i][0]!= null) {
+                System.out.println("Pelicula "+nombrePeli_Ca[i][0]+"  Prestamos  "+id_anio_Prest[i][2];  
+            }
+            
+            
+        }
     }
 }
