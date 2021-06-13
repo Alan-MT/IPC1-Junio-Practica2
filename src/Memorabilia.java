@@ -32,12 +32,42 @@ public class Memorabilia{
         System.out.println("8.");
         System.out.println("9.");
         System.out.println("Escribe el numero de la opcion");
+        prestamoPeliculas();
+        Devolucion();
     }
     public static void main(String[] args) {
         Memorabilia peli = new Memorabilia();
     }
     public void prestamoPeliculas() {
-        imprimirPeliculas();
+        mostrarClientes();
+        System.out.print("Escriba el numero de cliente: ");
+        int cliente = sca.nextInt();
+        if (peliprestada[cliente-1]==false) {
+            imprimirPeliculasDisponibles();
+            int numPel = sca.nextInt();
+            System.out.println("Escriba el numero de dias a prestar");
+            int dias = sca.nextInt();
+            realizarPrestamo((cliente-1), (numPel-1), dias);
+        }else{
+            System.out.println("El cliente no puede perdir otra pelicula");
+        }
+        
+    }
+    public void realizarPrestamo(int indiceCliente, int indicePel, int numdias){
+        peliprestada[indiceCliente] = true;
+        Disponible[indicePel] = false;
+        id_anio_Prest[indicePel][2]++;
+
+        for (int i = 0; i < prestamos.length; i++) {
+            if (prestamos[i][0]==0) {
+                prestamos[i][0] = id_anio_Prest[indicePel][0];
+                prestamos[i][1] = id_telefono[indiceCliente][0];
+                prestamos[i][2] = numdias;
+                
+                peli_clie[i][0] = nombrePeli_Ca[indicePel][0];
+                peli_clie[i][1] = nombreCliente[indiceCliente];
+            } 
+        }
     }
 
     public void imprimirPeliculas(){
@@ -101,6 +131,42 @@ public class Memorabilia{
             if (id_anio_Prest[i][0] != 0) {
                 System.out.println((i+1)+".  ID: "+id_anio_Prest[i][0]+",   Nombre: "+nombrePeli_Ca[i][0]+",   Anio: "+id_anio_Prest[i][1]+",   Categoria: "+nombrePeli_Ca[i][1]+",   Estado: "+estadoPelicula(Disponible[i]));
             }
+        }
+
+    }
+
+    public void Devolucion(){
+
+        System.out.println("ID del cliente");
+        int idcliente= sca.nextInt();
+        System.out.println("ID de la pelicula");
+        int idpelicula = sca.nextInt();
+        for (int i = 0; i < cantidadClientes; i++) {
+            //if (id_anio_prestamo[i][0] != 0 && disponible[i]==true) {
+            if (id_telefono[i][0] == idcliente && idpelicula == id_anio_Prest[i][0]) {
+
+                System.out.println((i+1)+".  ID: "+id_anio_Prest[i][0]+",   Nombre: "+nombrePeli_Ca[i][0]+",   Anio: "+id_anio_Prest[i][1]+",   Categoria: "+nombrePeli_Ca[i][1]+",   Estado: "+estadoPelicula(Disponible[i]));
+                Disponible[idpelicula] = true;
+            } 
+        }
+        
+
+        
+    }
+    public void RegistrarPersona(){
+        System.out.println("Ingrse su nombre");
+        String nombre = sca.nextLine();
+        for(int i = 0; i<cantidadClientes;i++ ){
+            if(nombre != nombreCliente[i] && nombreCliente[i] == ""){
+                nombreCliente[i] = nombre;
+                System.out.println("ingrese su telefono ");
+                int telefono = sca.nextInt();
+                id_telefono[i][1] = telefono;
+                int ID = (int)(Math.random()*(999-100)+100);
+                id_telefono[i][0] = ID;
+        }
+        
+
         }
 
     }
