@@ -204,6 +204,7 @@ public class Memorabilia {
         }
 
     }
+    
     public int generarID(){
         int ID = 0;
        for (int i = 0; i < cantidadClientes; i++) {
@@ -215,4 +216,38 @@ public class Memorabilia {
         return ID;
     }
 
+    public void ingresoPeliculas(){
+        System.out.print("\nIngrese el nombre de la pelicula: ");
+        String nombrepeli = sca.nextLine();
+        System.out.print("\nIngrese la categorai de la pelicula: ");
+        String categaoria = sca.nextLine();
+        System.out.print("\nIngrese el anio de la pelicula: ");
+        int anio = sca.nextInt();
+        int id = generarIdPeliculas();
+        for (int i = 0; i < cantidadClientes; i++) {
+            if (nombrePeli_Ca[i][0]==null) {
+                nombrePeli_Ca[i][0] = nombrepeli;
+                nombrePeli_Ca[i][1] = categaoria;
+                id_anio_Prest[i][0] = id;
+                id_anio_Prest[i][1] = anio;
+                id_anio_Prest[i][2] = 0;
+                Disponible[0] = true;
+                break;
+            }
+           
+        }
+        
+        
+    }
+
+    public int generarIdPeliculas(){
+        int ID = 0;
+       for (int i = 0; i < cantidadClientes; i++) {
+        ID = (int)(Math.random()*(100-1)+1);
+           if (id_anio_Prest[i][0]!=ID &&  id_anio_Prest[i][0] == 0) {   
+               break;
+           }
+       }  
+        return ID;
+    }
 }
