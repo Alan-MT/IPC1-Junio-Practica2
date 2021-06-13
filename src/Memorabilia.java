@@ -13,6 +13,7 @@ public class Memorabilia{
     String[][] nombrePeli_Ca = new String[cantidadClientes][2];
     int [][] id_anio_Prest = new int[cantidadClientes][3];
     boolean[] Disponible = new boolean[cantidadClientes];
+    String[] categorias = new String[10];
     //prestamos
     //id peli, id cliente, dias prestados
     int[][] prestamos = new int[30][3];
@@ -36,14 +37,11 @@ public class Memorabilia{
         Memorabilia peli = new Memorabilia();
     }
     public void prestamoPeliculas() {
-
         imprimirPeliculas();
     }
 
     public void imprimirPeliculas(){
-
         System.out.println("Peliculas");
-
         for (int i = 0; i < cantidadClientes; i++) {
             //if (id_anio_prestamo[i][0] != 0 && disponible[i]==true) {
             if (id_anio_Prest[i][0] != 0) {
@@ -62,6 +60,49 @@ public class Memorabilia{
             estadoPelicula = "Prestada";
         }
         return estadoPelicula;
+    }
+
+    public void mostrarClientes() {
+
+        for (int i = 0; i < cantidadClientes; i++) {
+            if (nombreCliente[i] != null) {
+                System.out.println((i+1)+".  ID: "+id_telefono[i][0]+",   Nombre: "+nombreCliente[i]+",   Telefono: "+id_telefono[i][1]+",  Estado de Prestamo: "+estadoCliente(peliprestada[i]));
+            }
+        }
+    }
+
+    public String estadoCliente(boolean estado) {
+        String estadoCliente;
+
+        if (estado == true) {
+            estadoCliente = "Activo";
+        } else {
+            estadoCliente = "No activo";
+        }
+        return estadoCliente;
+    }
+
+    public void imprimirPeliculasDisponibles(){
+
+        System.out.println("Peliculas Disponibles");
+
+        for (int i = 0; i < cantidadClientes; i++) {
+            if (id_anio_Prest[i][0] != 0 && Disponible[i]==true) {            
+                System.out.println((i+1)+".  ID: "+id_anio_Prest[i][0]+",   Nombre: "+nombrePeli_Ca[i][0]+",   Anio: "+id_anio_Prest[i][1]+",   Categoria: "+nombrePeli_Ca[i][1]);
+            }
+        }
+
+    }
+    public void mostrarTodasPeliculas(){
+
+        System.out.println("Peliculas");
+
+        for (int i = 0; i < cantidadClientes; i++) {
+            if (id_anio_Prest[i][0] != 0) {
+                System.out.println((i+1)+".  ID: "+id_anio_Prest[i][0]+",   Nombre: "+nombrePeli_Ca[i][0]+",   Anio: "+id_anio_Prest[i][1]+",   Categoria: "+nombrePeli_Ca[i][1]+",   Estado: "+estadoPelicula(Disponible[i]));
+            }
+        }
+
     }
     
 
