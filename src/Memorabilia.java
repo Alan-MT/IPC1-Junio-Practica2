@@ -13,7 +13,7 @@ public class Memorabilia {
     String[][] nombrePeli_Ca = new String[cantidadClientes][2];
     int[][] id_anio_Prest = new int[cantidadClientes][3];
     boolean[] Disponible = new boolean[cantidadClientes];
-    String[] categorias = new String[10];
+    String[] categorias = new String[5];
     // prestamos
     // id peli, id cliente, dias prestados
     int[][] prestamos = new int[30][3];
@@ -34,6 +34,12 @@ public class Memorabilia {
         System.out.println("Escribe el numero de la opcion");
         prestamoPeliculas();
         Devolucion();
+
+        categorias[0] = "Romanticas";
+        categorias[1] = "Ciencias Ficcion";
+        categorias[2] = "Comedia";
+        categorias[3] = "Terror";
+        categorias[4] = "Accion";
     }
 
     public static void main(String[] args) {
@@ -219,15 +225,14 @@ public class Memorabilia {
     public void ingresoPeliculas(){
         System.out.print("\nIngrese el nombre de la pelicula: ");
         String nombrepeli = sca.nextLine();
-        System.out.print("\nIngrese la categorai de la pelicula: ");
-        String categaoria = sca.nextLine();
+        String categoria = asignarCategoria();
         System.out.print("\nIngrese el anio de la pelicula: ");
         int anio = sca.nextInt();
         int id = generarIdPeliculas();
         for (int i = 0; i < cantidadClientes; i++) {
             if (nombrePeli_Ca[i][0]==null) {
                 nombrePeli_Ca[i][0] = nombrepeli;
-                nombrePeli_Ca[i][1] = categaoria;
+                nombrePeli_Ca[i][1] = categoria;
                 id_anio_Prest[i][0] = id;
                 id_anio_Prest[i][1] = anio;
                 id_anio_Prest[i][2] = 0;
@@ -261,5 +266,30 @@ public class Memorabilia {
                 }
             }
         }
+    }
+
+    public void Reportes(){
+        System.out.println("\n Reportes");
+        System.out.println("Cantidad de peliculas por categoria: ");
+
+        System.out.println("Peliculas por Categoria: ");
+
+        System.out.println("Cantidad de peliculas: ");
+
+        System.out.println("Peliculas mas prestadas: ");
+
+        System.out.println("peliculas Menos prestadas: ");
+
+
+    }
+
+    public String asignarCategoria(){
+        System.out.print("\nSeleccione la categoria de la pelicula: ");
+        for (int i = 0; i < categorias.length; i++) {
+            System.out.println((i+1)+"."+categorias[i]);
+        }
+        System.out.println("Escriba el numero de la categoria");
+        int categoriaPelicua = sca.nextInt();
+        return categorias[categoriaPelicua-1];
     }
 }
