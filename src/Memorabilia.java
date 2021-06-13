@@ -272,6 +272,7 @@ public class Memorabilia {
         System.out.println("\n Reportes");
         System.out.println("Cantidad de peliculas por categoria: ");
         int[] contadora = new int[5];
+        contadoresCategoria(contadora);
         System.out.println("Peliculas por Categoria: ");
 
  
@@ -312,10 +313,30 @@ public class Memorabilia {
     public void imprimirPeliculasPrestadas(){
         for (int i = 0; i < cantidadClientes; i++) {
             if (nombrePeli_Ca[i][0]!= null) {
-                System.out.println("Pelicula "+nombrePeli_Ca[i][0]+"  Prestamos  "+id_anio_Prest[i][2];  
+                System.out.println("Pelicula "+nombrePeli_Ca[i][0]+"  Prestamos  "+id_anio_Prest[i][2]);  
             }
             
             
+        }
+    }
+
+    public void contadoresCategoria(int[] contador){
+        for (int i = 0; i < cantidadClientes; i++) {
+            if (nombrePeli_Ca[i][1].equals(categorias[0])) {
+                contador[0]++;
+            } else if (nombrePeli_Ca[i][1].equals(categorias[1])) {
+                contador[1]++;
+            } else if(nombrePeli_Ca[i][1].equals(categorias[2])) {
+                contador[2]++;
+            }else if(nombrePeli_Ca[i][1].equals(categorias[3])) {
+                contador[3]++;
+            }else if(nombrePeli_Ca[i][1].equals(categorias[4])) {
+                contador[4]++;
+            }
+            
+        }
+        for (int i = 0; i < contador.length; i++) {
+            System.out.println("Categorias "+categorias[i]+": "+contador[i]);
         }
     }
 }
