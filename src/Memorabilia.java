@@ -270,21 +270,32 @@ public class Memorabilia {
 
     public void Reportes(){
         System.out.println("\n Reportes");
-        System.out.println("Cantidad de peliculas por categoria: ");
-        int[] contadora = new int[5];
-        contadoresCategoria(contadora);
-        System.out.println("Peliculas por Categoria: ");
-
- 
-        System.out.println("Cantidad de prestamos por peliculas: ");
-        imprimirPeliculasPrestadas();
-        String masPrestadas = "", menosPrestads = "";
-        manejarCategoria(masPrestadas, menosPrestads);
-        System.out.println("Peliculas mas prestadas: "+masPrestadas);
-
-        System.out.println("peliculas Menos prestadas: "+menosPrestads);
-
-
+        System.out.println("1. Cantidad de peliculas por categoria: ");
+        System.out.println("2. Peliculas por Categoria: ");
+        System.out.println("3. Cantidad de prestamos por peliculas: ");
+        System.out.println("4. Peliculas mas prestadas y menos prestada");
+        int num = sca.nextInt();
+        switch (num) {
+            case 1:
+            System.out.println("peliculas por categoria");
+            int[] contadora = new int[5];
+            contadoresCategoria(contadora);
+                break;
+            case 2:
+                buscarCategoriaEspecifica();
+                break;
+            case 3:
+            imprimirPeliculasPrestadas();
+                break;
+            case 4:
+            String masPrestadas = "", menosPrestads = "";
+            manejarCategoria(masPrestadas, menosPrestads);
+            System.out.println("Peliculas mas prestadas: "+masPrestadas);
+            System.out.println("peliculas Menos prestadas: "+menosPrestads);
+            default:
+            System.out.println("numero incorrecto");
+                break;
+        }
     }
 
     public String asignarCategoria(){
@@ -336,7 +347,19 @@ public class Memorabilia {
             
         }
         for (int i = 0; i < contador.length; i++) {
-            System.out.println("Categorias "+categorias[i]+": "+contador[i]);
+            System.out.println(categorias[i]+": "+contador[i]);
         }
+    }
+
+    public void buscarCategoriaEspecifica(){
+        String categ = asignarCategoria();
+        System.out.println("Categoria de pelicula "+categ);
+        for (int i = 0; i < categorias.length; i++) {
+            if (nombrePeli_Ca[i][1].equals(categ)) {
+                System.out.println("Pelicula: "+nombrePeli_Ca[i][1]);
+            }
+            System.out.println();
+        }
+        System.out.println("");
     }
 }
