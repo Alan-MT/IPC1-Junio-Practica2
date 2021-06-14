@@ -171,7 +171,7 @@ public class Memorabilia {
 
     public void Devolucion() {
         for (int i = 0; i < prestamos.length; i++) {
-            if (peli_clie[i][0] != null) {
+            if (peli_clie[i][0] != null && prestamos[i][1] != 0) {
                 System.out.println("Numero de Prestamo: "+(i+1)+"   Pelicula: " + peli_clie[i][0] + "   Cliente: " + peli_clie[i][1] + "   ID CLIENTE: "
                         + prestamos[i][1]);
             }
@@ -366,15 +366,15 @@ public class Memorabilia {
 
     public void contadoresCategoria(int[] contador) {
         for (int i = 0; i < cantidadClientes; i++) {
-            if (nombrePeli_Ca[i][0] != null && nombrePeli_Ca[i][1].equals(categorias[0])) {
+            if (nombrePeli_Ca[i][1] != null && nombrePeli_Ca[i][1].equals(categorias[0])) {
                 contador[0]++;
             } else if (nombrePeli_Ca[i][1] != null && nombrePeli_Ca[i][1].equals(categorias[1])) {
                 contador[1]++;
-            } else if (nombrePeli_Ca[i][2] != null && nombrePeli_Ca[i][1].equals(categorias[2])) {
+            } else if (nombrePeli_Ca[i][1] != null && nombrePeli_Ca[i][1].equals(categorias[2])) {
                 contador[2]++;
-            } else if (nombrePeli_Ca[i][3] != null && nombrePeli_Ca[i][1].equals(categorias[3])) {
+            } else if (nombrePeli_Ca[i][1] != null && nombrePeli_Ca[i][1].equals(categorias[3])) {
                 contador[3]++;
-            } else if (nombrePeli_Ca[i][4] != null && nombrePeli_Ca[i][1].equals(categorias[4])) {
+            } else if (nombrePeli_Ca[i][1] != null && nombrePeli_Ca[i][1].equals(categorias[4])) {
                 contador[4]++;
             }
 
@@ -418,6 +418,11 @@ public class Memorabilia {
         id_telefono[2][0] = 300;
         id_telefono[3][0] = 304;
         id_telefono[4][0] = 430;
+        prestamos[0][1] = 120;
+        prestamos[1][1] = 230;
+        prestamos[2][1] = 300;
+        prestamos[3][1] = 304;
+        prestamos[4][1] = 430;
         id_telefono[0][1] = 58493843;
         id_telefono[1][1] = 58493812;
         id_telefono[2][1] = 58493823;
@@ -458,6 +463,12 @@ public class Memorabilia {
         Disponible[2] = false;
         Disponible[3] = true;
         Disponible[4] = false;
+        peli_clie[0][0] = nombrePeli_Ca[0][0];
+        peli_clie[2][0] = nombrePeli_Ca[2][0];
+        peli_clie[4][0] = nombrePeli_Ca[4][0];
+        peli_clie[0][1] = nombreCliente[0];
+        peli_clie[2][1] = nombreCliente[2];
+        peli_clie[4][1] = nombreCliente[4];
 
     }
 }
