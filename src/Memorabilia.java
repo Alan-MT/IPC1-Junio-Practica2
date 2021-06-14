@@ -231,7 +231,7 @@ public class Memorabilia {
 
     public void ingresoPeliculas() {
         System.out.print("\nIngrese el nombre de la pelicula: ");
-        String nombrepeli = sca.nextLine();
+        String nombrepeli = sca.next();
         String categoria = asignarCategoria();
         System.out.print("\nIngrese el anio de la pelicula: ");
         int anio = sca.nextInt();
@@ -243,7 +243,7 @@ public class Memorabilia {
                 id_anio_Prest[i][0] = id;
                 id_anio_Prest[i][1] = anio;
                 id_anio_Prest[i][2] = 0;
-                Disponible[0] = true;
+                Disponible[i] = true;
                 break;
             }
 
