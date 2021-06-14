@@ -43,6 +43,7 @@ public class Memorabilia {
                     Devolucion();
                     break;
                 case 3:
+                    ordenarString();
                     mostrarTodasPeliculas();
                     break;
                 case 4:
